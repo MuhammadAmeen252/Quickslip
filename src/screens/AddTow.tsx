@@ -66,6 +66,7 @@ const AddTow = () => {
                     label="Complex Name..."
                     key="complexName"
                     icon={require('../assets/icons/name_input_blue.png')}
+                    activeIcon={require('../assets/icons/name_input.png')}
                   />
                 )}
                 name="complexName"
@@ -84,7 +85,8 @@ const AddTow = () => {
                     Value={value}
                     label="License Plate..."
                     key="licensePlate"
-                    icon={require('../assets/icons/sedan.png')}
+                    icon={require('../assets/icons/car_blue.png')}
+                    activeIcon={require('../assets/icons/car_grey.png')}
                   />
                 )}
                 name="licensePlate"
@@ -103,7 +105,8 @@ const AddTow = () => {
                     Value={value}
                     label="Car Make and Model"
                     key="make&make"
-                    icon={require('../assets/icons/steering_wheel.png')}
+                    icon={require('../assets/icons/str_blue.png')}
+                    activeIcon={require('../assets/icons/str_grey.png')}
                   />
                 )}
                 name="carMakeModel"
@@ -122,8 +125,8 @@ const AddTow = () => {
                   onChange={onChange}
                   content={addTow}
                   placeholder={'Reason for Tow'}
-                  borderColor={'#186FE7'}
-                  textColor={'#186FE7'}
+                  borderColor={value ? '#8a8a8a' : '#186FE7'}
+                  textColor={value ? '#8a8a8a' : '#186FE7'}
                   blueArrow
                 />
               )}

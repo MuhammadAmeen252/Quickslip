@@ -23,7 +23,7 @@ function App(): JSX.Element {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Register"
+            initialRouteName="AllJobs"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="AddTow" component={AddTow} />
             <Stack.Screen name="AllJobs" component={AllJobs} />

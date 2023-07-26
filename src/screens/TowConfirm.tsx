@@ -22,8 +22,8 @@ const TowConfirm = () => {
           </View>
           <View>
             <MainContent
-              heading="Take to Compound"
-              content="Thank you for towing the violated vehicle. Please take the impounded vehicle to our lot. If you need to tow an additional vehicle please select that option."
+              heading="Added Vehicle"
+              content="Vehicle sent to Dispatch letting them know you are now en route to the lot. If you need to add another vehicle see the options below."
             />
           </View>
           <View>
