@@ -70,7 +70,8 @@ const Register: React.FC<props> = () => {
                     Value={value}
                     label="Name"
                     key="name"
-                    icon={require('../assets/icons/name_input.png')}
+                    icon={require('../assets/icons/input_blue.png')}
+                    activeIcon={require('../assets/icons/name_input.png')}
                     name
                   />
                 )}
@@ -89,6 +90,7 @@ const Register: React.FC<props> = () => {
                     label="Phone"
                     key="phone"
                     icon={require('../assets/icons/phone_input.png')}
+                    activeIcon={require('../assets/icons/phone_grey.png')}
                     phone
                   />
                 )}
@@ -109,7 +111,8 @@ const Register: React.FC<props> = () => {
                     Value={value}
                     label="New Password"
                     key="password"
-                    icon={require('../assets/icons/lock_input.png')}
+                    icon={require('../assets/icons/lock_blue.png')}
+                    activeIcon={require('../assets/icons/lock_grey.png')}
                     password
                   />
                 )}
@@ -130,7 +133,8 @@ const Register: React.FC<props> = () => {
                     Value={value}
                     label="Confirm New Password"
                     key="confirm"
-                    icon={require('../assets/icons/lock_input.png')}
+                    icon={require('../assets/icons/lock_blue.png')}
+                    activeIcon={require('../assets/icons/lock_grey.png')}
                     confirmPassword
                   />
                 )}

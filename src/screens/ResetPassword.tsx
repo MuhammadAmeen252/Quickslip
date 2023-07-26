@@ -54,7 +54,8 @@ const ResetPassword = () => {
                     Value={value}
                     label="Current Password"
                     key="currentPassword"
-                    icon={require('../assets/icons/lock_input.png')}
+                    icon={require('../assets/icons/lock_blue.png')}
+                    activeIcon={require('../assets/icons/lock_grey.png')}
                     password
                   />
                 )}
@@ -75,7 +76,8 @@ const ResetPassword = () => {
                     Value={value}
                     label="New Password"
                     key="password"
-                    icon={require('../assets/icons/lock_input.png')}
+                    icon={require('../assets/icons/lock_blue.png')}
+                    activeIcon={require('../assets/icons/lock_grey.png')}
                     password
                   />
                 )}
@@ -96,7 +98,8 @@ const ResetPassword = () => {
                     Value={value}
                     label="Confirm New Password"
                     key="confirm"
-                    icon={require('../assets/icons/lock_input.png')}
+                    icon={require('../assets/icons/lock_blue.png')}
+                    activeIcon={require('../assets/icons/lock_grey.png')}
                     confirmPassword
                   />
                 )}

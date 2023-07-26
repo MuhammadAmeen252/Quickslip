@@ -19,6 +19,12 @@ const PersonalInfo = () => {
     methods.reset();
   };
 
+  const isEmailValid = (email: string) => {
+    // Regular expression for email format validation
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
   const checkFormCompletion = () => {
     // if there is no error and all form fileds fills then enable the register button
 
@@ -61,6 +67,7 @@ const PersonalInfo = () => {
                     label="Name"
                     key="name"
                     icon={require('../assets/icons/name_input_blue.png')}
+                    activeIcon={require('../assets/icons/name_input.png')}
                   />
                 )}
                 name="name"
@@ -78,11 +85,15 @@ const PersonalInfo = () => {
                     label="Email"
                     key="email"
                     icon={require('../assets/icons/mail_blue_icon.png')}
+                    activeIcon={require('../assets/icons/mail_grey.png')}
                     email
                   />
                 )}
                 name="email"
-                rules={{required: true}}
+                rules={{
+                  required: true,
+                  validate: value => isEmailValid(value),
+                }}
               />
             </View>
 
