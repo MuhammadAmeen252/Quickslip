@@ -13,148 +13,59 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import GoBackHeading from '../components/GoBackHeading';
+import SignupStepCard from '../components/SignupStepCard';
+import PersonIcon from '../components/PersonIcon';
+import LockIcon from '../components/LockIcon';
+import CameraIcon from '../components/CameraIcon';
+import TruckIcon from '../components/TowTruckIcon';
+import ConfirmationIcon from '../components/ConfirmationIcon';
 
 interface props {
   navigation: any;
 }
 
 const Register: React.FC<props> = () => {
-  const [password, setPassword] = useState<string>('');
-  const [disableButton, setDisableButton] = useState<boolean>(true);
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [disableButton, setDisableButton] = useState<boolean>(false);
 
   const methods = useForm();
 
   const navigation: any = useNavigation();
 
-  const onSubmit = (data: any) => {
-    Alert.alert('Form Data', JSON.stringify(data));
-    methods.reset();
-
-    // once registration done then user can't come back
-    navigation.replace('Dashboard');
+  const navigateToNext = (data: any) => {
+    navigation.navigate('PersonalInformation');
   };
-
-  const checkFormCompletion = () => {
-    // if there is no error and all form fileds fills then enable the register button
-    setDisableButton(
-      !methods.formState.isValid || password !== confirmPassword,
-    );
-  };
-
-  useEffect(() => {
-    checkFormCompletion();
-  }, [methods.formState.isValid, password, confirmPassword]);
 
   return (
     <SafeAreaView>
+      <GoBackHeading hideBackArrow text="Personal Information" />
       <KeyboardAwareScrollView>
         <View style={styles.container}>
-          <View style={styles.logo_container}>
-            <Image
-              style={styles.logo}
-              source={require('../assets/icons/logo_icon.png')}
-            />
-          </View>
           <MainContent
-            heading="Tow Trucker Account"
-            content="Thank you for joining Spartan Towing. To get you onboarded to the team, please enter your information."
+            isHeadingCenter
+            heading="Setting Up an Account"
           />
-          <FormProvider {...methods}>
-            <View>
-              <Controller
-                control={methods.control}
-                render={({field: {onChange, onBlur, value}}) => (
-                  <Textinput
-                    handleChange={onChange}
-                    Value={value}
-                    label="Name"
-                    key="name"
-                    icon={require('../assets/icons/input_blue.png')}
-                    activeIcon={require('../assets/icons/name_input.png')}
-                    name
-                  />
-                )}
-                name="name"
-                rules={{required: true}}
-              />
-            </View>
-
-            <View>
-              <Controller
-                control={methods.control}
-                render={({field: {onChange, onBlur, value}}) => (
-                  <Textinput
-                    handleChange={onChange}
-                    Value={value}
-                    label="Phone"
-                    key="phone"
-                    icon={require('../assets/icons/phone_input.png')}
-                    activeIcon={require('../assets/icons/phone_grey.png')}
-                    phone
-                  />
-                )}
-                name="phone"
-                rules={{required: true}}
-              />
-            </View>
-
-            <View>
-              <Controller
-                control={methods.control}
-                render={({field: {onChange, onBlur, value}}) => (
-                  <Textinput
-                    handleChange={val => {
-                      onChange(val);
-                      setPassword(val);
-                    }}
-                    Value={value}
-                    label="New Password"
-                    key="password"
-                    icon={require('../assets/icons/lock_blue.png')}
-                    activeIcon={require('../assets/icons/lock_grey.png')}
-                    password
-                  />
-                )}
-                name="password"
-                rules={{required: true}}
-              />
-            </View>
-
-            <View>
-              <Controller
-                control={methods.control}
-                render={({field: {onChange, onBlur, value}}) => (
-                  <Textinput
-                    handleChange={val => {
-                      onChange(val);
-                      setConfirmPassword(val);
-                    }}
-                    Value={value}
-                    label="Confirm New Password"
-                    key="confirm"
-                    icon={require('../assets/icons/lock_blue.png')}
-                    activeIcon={require('../assets/icons/lock_grey.png')}
-                    confirmPassword
-                  />
-                )}
-                name="confirmPassword"
-                rules={{required: true}}
-              />
-            </View>
-
-            <View>
-              <TouchableOpacity
+          <View style={styles.StepsContainer}>
+            <SignupStepCard ImageElement={<PersonIcon/>} subtitle='Name, Email, Phone Number' title='Personal Information' isCompleted/>
+            <SignupStepCard ImageElement={<LockIcon/>} subtitle='Password creation and confirmation' title='Create Password' />
+            <SignupStepCard isDisabled ImageElement={<CameraIcon isDisabled />} subtitle='Upload a picture of yourself' title='Profile Picture' />
+            <SignupStepCard isDisabled ImageElement={<TruckIcon isDisabled/>} subtitle='Select the truch you will be driving' title='Vehicle Information' />
+            <SignupStepCard isDisabled ImageElement={<ConfirmationIcon isDisabled/>} subtitle='Overview of each section' title='Confirmation' />
+          </View>
+          <TouchableOpacity
                 style={[
                   styles.register_button,
-                  {backgroundColor: disableButton ? '#8a8a8a' : '#186FE7'},
+                  { backgroundColor: disableButton ? '#8a8a8a' : '#186FE7' },
                 ]}
-                onPress={methods.handleSubmit(onSubmit)}
-                disabled={disableButton}>
-                <Text style={styles.button_text}>Register</Text>
+                onPress={navigateToNext}
+                disabled={disableButton}
+              >
+                <Text style={styles.button_text}>NEXT</Text>
+                <Image
+                  style={styles.btn_icon}
+                  source={require('../assets/icons/right_arrow.png')}
+                />
               </TouchableOpacity>
-            </View>
-          </FormProvider>
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>
@@ -170,16 +81,13 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
-  logo_container: {
-    textAlign: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+  btn_icon: {
+    height: 17,
+    width: 17,
   },
 
-  logo: {
-    height: 64,
-    width: 64,
+  StepsContainer: {
+    paddingTop: 30,
   },
 
   register_button: {
@@ -190,11 +98,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
+    marginTop:60
   },
 
   button_text: {
     color: 'white',
     fontSize: 20,
     fontWeight: '700',
+    marginRight:15
   },
 });

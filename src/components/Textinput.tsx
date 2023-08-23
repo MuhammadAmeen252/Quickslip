@@ -21,6 +21,7 @@ interface props {
   searchBar?: any;
   activeIcon?: any;
   confirmPassword?: any;
+  required?: Boolean;
   handleChange: (val: string) => void;
 }
 
@@ -36,6 +37,7 @@ const Textinput: React.FC<props> = ({
   handleChange,
   confirmPassword,
   activeIcon,
+  required
 }) => {
   const ref: any = useRef(null);
   const [value, setValue] = useState(() => Value);
@@ -63,15 +65,16 @@ const Textinput: React.FC<props> = ({
 
         {/* Custom Label */}
       </View>
-      <View>
+      <View style={{display:'flex', flexDirection:'row'}}>
         <Text
           onPress={() => {
             ref.current.focus();
             setIsActive(true);
           }}
           style={isActive ? styles.active_input_label : styles.input_label}>
-          {label}
+          {label} 
         </Text>
+        {required && ! isActive && <Text style={ styles.required_input_label}>{"(Required)"}</Text>}
       </View>
 
       <View>
@@ -105,7 +108,7 @@ const Textinput: React.FC<props> = ({
           }
           keyboardType={phone ? 'numeric' : 'default'}
           // for password user can enter 8 char and normal 50
-          maxLength={password || confirmPassword ? 8 : 50}
+          maxLength={password || confirmPassword ? 20 : 50}
         />
       </View>
 
@@ -136,6 +139,7 @@ export default Textinput;
 
 const styles = StyleSheet.create({
   input_container: {
+    backgroundColor:'#fff',
     borderWidth: 2,
     borderColor: '#186FE7',
     borderRadius: 8,
@@ -173,8 +177,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
 
+  required_input_label: {
+    fontSize: 14,
+    color: '#186FE7',
+    paddingLeft:10,
+    fontWeight:'300',
+  },
+
+  required_active_input_label: {
+    paddingLeft:10,
+    fontSize: 10,
+    fontWeight:'300',
+    color: '#8a8a8a',
+    position: 'absolute',
+    top: -35,
+    backgroundColor: '#f5f5f5',
+    paddingHorizontal: 5,
+  },
+
   active_input_field: {
     borderWidth: 2,
+    backgroundColor:'#fff',
     borderColor: '#8a8a8a',
     borderRadius: 8,
     flexDirection: 'row',

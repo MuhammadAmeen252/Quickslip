@@ -14,6 +14,10 @@ import AccountSettings from './src/screens/AccountSettings';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import PersonalInformation from './src/screens/PersonalInformation';
+import PasswordInformation from './src/screens/PasswordInfo';
+import UploadPicInfo from './src/screens/UploadPicInfo';
+import VehicleInfo from './src/screens/VehicleInfo';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,12 +27,16 @@ function App(): JSX.Element {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="AllJobs"
+            initialRouteName="VehicleInfo"
             screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="PersonalInformation" component={PersonalInformation} />
+            <Stack.Screen name="PasswordInformation" component={PasswordInformation} />
+            <Stack.Screen name="UploadPictureInfo" component={UploadPicInfo} />
+            <Stack.Screen name="VehicleInfo" component={VehicleInfo} />
             <Stack.Screen name="AddTow" component={AddTow} />
             <Stack.Screen name="AllJobs" component={AllJobs} />
             <Stack.Screen name="Compound" component={Compound} />
-            <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Dashboard" component={Dashboard} />
             <Stack.Screen name="CurrentJob" component={CurrentJob} />
             <Stack.Screen name="TowConfirm" component={TowConfirm} />

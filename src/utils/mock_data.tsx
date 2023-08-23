@@ -84,3 +84,18 @@ export const dropdown_2 = [
     value: '5',
   },
 ];
+
+export const Truck_List = [
+  {
+    label:"Volvo truck",
+    value:"Volvo truck"
+  },
+  {
+    label:"Toyota truck",
+    value:"Toyota truck"
+  },
+  {
+    label:"Toyota truck",
+    value:"Tesla truck"
+  }
+]
