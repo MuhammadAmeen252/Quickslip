@@ -15,15 +15,13 @@ import GoBackHeading from '../components/GoBackHeading';
 import MainContent from '../components/MainContent';
 import {Truck_List} from '../utils/mock_data';
 import TruckIcon from '../components/TowTruckIcon';
+import { useNavigation } from '@react-navigation/native';
 
-interface Props {
-  navigation: any;
-}
-
-const VehicleInfo: React.FC<Props> = ({navigation}) => {
+const VehicleInfo: React.FC = () => {
   const [disableButton, setDisableButton] = useState<boolean>(true);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
+  const navigation: any = useNavigation();
 
   const methods = useForm();
 
@@ -85,7 +83,7 @@ const VehicleInfo: React.FC<Props> = ({navigation}) => {
                     styles.register_button,
                     {backgroundColor: disableButton ? '#8a8a8a' : '#186FE7'},
                   ]}
-                  onPress={() => {}}
+                  onPress={() => {navigation.navigate("ProfileConfirmation")}}
                   disabled={disableButton}>
                   <Image
                     style={styles.lock_icon}
