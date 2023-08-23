@@ -26,11 +26,14 @@ const UploadPicInfo: React.FC<Props> = () => {
   const navigation: any = useNavigation();
 
   const handleChangeImageInfo = (image: any) => {
-    Alert.alert('Image data submitted!');
     setImageInfo(image);
     setDisableButton(false);
-    navigation.navigate("VehicleInfo")
   } 
+
+  const imageInfoSubmitted = () => {
+    if(imageInfo)
+    navigation.navigate("VehicleInfo");
+  }
 
   return (
     <SafeAreaView>
@@ -54,7 +57,7 @@ const UploadPicInfo: React.FC<Props> = () => {
                   styles.register_button,
                   {backgroundColor: disableButton ? '#8a8a8a' : '#186FE7'},
                 ]}
-                onPress={() => {}}
+                onPress={imageInfoSubmitted}
                 disabled={disableButton}>
                 <Image
                   style={styles.lock_icon}

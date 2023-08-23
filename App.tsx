@@ -18,6 +18,8 @@ import PersonalInformation from './src/screens/PersonalInformation';
 import PasswordInformation from './src/screens/PasswordInfo';
 import UploadPicInfo from './src/screens/UploadPicInfo';
 import VehicleInfo from './src/screens/VehicleInfo';
+import ProfileConfirmation from './src/screens/ProfileConfirmation';
+import RegisterGreeting from './src/screens/RegisterGreeting';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,13 +29,15 @@ function App(): JSX.Element {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="VehicleInfo"
+            initialRouteName="Register"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="PersonalInformation" component={PersonalInformation} />
             <Stack.Screen name="PasswordInformation" component={PasswordInformation} />
             <Stack.Screen name="UploadPictureInfo" component={UploadPicInfo} />
             <Stack.Screen name="VehicleInfo" component={VehicleInfo} />
+            <Stack.Screen name="ProfileConfirmation" component={ProfileConfirmation} />
+            <Stack.Screen name="RegisterGreeting" component={RegisterGreeting} />
             <Stack.Screen name="AddTow" component={AddTow} />
             <Stack.Screen name="AllJobs" component={AllJobs} />
             <Stack.Screen name="Compound" component={Compound} />

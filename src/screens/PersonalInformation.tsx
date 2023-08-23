@@ -40,7 +40,6 @@ const PersonalInformation: React.FC<Props> = ({navigation}) => {
     const isFormValid = await methods.trigger(); // Trigger validation for all fields
 
     if (isFormValid) {
-      Alert.alert('Form submitted!');
       const jsonData = JSON.stringify(data);
       methods.reset();
       setDisableButton(false);

@@ -54,7 +54,6 @@ const PasswordInformation: React.FC<Props> = ({navigation}) => {
         } else {
           setPasswordError(null);
           setConfirmPasswordError(null);
-          Alert.alert('Form submitted!');
           methods.reset();
           setDisableButton(false);
           navigation.navigate("UploadPictureInfo");

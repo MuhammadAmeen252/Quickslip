@@ -43,7 +43,7 @@ const ImageUploadBox: React.FC<ImageProps> = ({handleImageInfo, imageInfo}) => {
 
   return (
     <TouchableOpacity onPress={handleImageUpload} style={styles.container}>
-      <TouchableOpacity onPress={handleContainerPress}>
+      <TouchableOpacity onPress={handleImageUpload}>
         {imageInfo ? (
           <Image source={{ uri: imageInfo }} style={styles.uploadedImage} />
         ) : (
